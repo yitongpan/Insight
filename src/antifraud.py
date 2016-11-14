@@ -30,7 +30,7 @@ else:
 	output = path.join(script_dir, "../paymo_output/output3.txt")
 
 # Read in all the data from batch_payment and create an initial graph
-with open('input_batch', 'r') as infile:
+with open(input_batch, 'r') as infile:
 	firstline = infile.readline()
 	for line in infile:
 		if re.search(pat, line):
@@ -39,8 +39,8 @@ with open('input_batch', 'r') as infile:
 			id2 = line[2]
 			graph.insertEdge(id1, id2)
 
-# Write the file with the degree we deserved 
-with open('input_stream','r') as infile, open(output,'w') as outfile:
+# Write the file with the degree we deserved
+with open(input_stream,'r') as infile, open(output,'w') as outfile:
 	firstline = infile.readline()
 	for line in infile:
 		if re.search(pat, line):
