@@ -1,11 +1,10 @@
 import re
 
 class Graph:
-	# for reference of this implementation of graph,
-	# see https://www.python.org/doc/essays/graphs/
 
 	__graph = {}
 
+    # To add friends for both user when transtraaction happens
 	# Insert e2 into the list after e1 and insert e1 into the list after e2
 	def insertEdge(self, e1, e2): #
 		if e1 in self.__graph:

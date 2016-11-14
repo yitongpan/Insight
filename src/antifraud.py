@@ -6,7 +6,7 @@ graph = grp.Graph()
 pat = '.*,' * 4
 fn_pat = 'txt$'
 
-# For the path of input
+# For the paths of input
 script_dir = path.dirname(__file__)
 input_batch = path.join(script_dir, "../paymo_input/batch_payment.txt")
 input_stream = path.join(script_dir, "../paymo_input/stream_payment.txt")
@@ -29,17 +29,19 @@ elif depth == 2:
 else:
 	output = path.join(script_dir, "../paymo_output/output3.txt")
 
-# Read in all the data from batch_payment and create an initial graph
+# Read in all the data from batch_payment and create an initial friendship map
 with open(input_batch, 'r') as infile:
+	# skip the line
 	firstline = infile.readline()
 	for line in infile:
+		# to see if the line has the right pattern
 		if re.search(pat, line):
 			line = line.split(',')
 			id1 = line[1]
 			id2 = line[2]
 			graph.insertEdge(id1, id2)
 
-# Write the file with the degree we deserved
+# output the file with the degree we deserved
 with open(input_stream,'r') as infile, open(output,'w') as outfile:
 	firstline = infile.readline()
 	for line in infile:
